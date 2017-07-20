@@ -30,17 +30,6 @@ echo *******Creating directory for iperf files*******
 sleep 2
 mkdir /home/iperf
 sleep 2
-# echo *******Creating startup script******
-# echo \#!/bin/sh > /home/iperf-script/startup_script_run_iperf
-# echo sleep 120 >> startup_script_run_iperf
-# echo python /home/iperf-script/execute_test.py >> startup_script_run_iperf
-# chmod +x /home/iperf-script/startup_script_run_iperf
-# sleep 2
-# echo *******Setting script to execute on startup*******
-# echo start on runlevel[2345] > /etc/init/startup_script_run
-# echo stop on runlevel[!2345] >> /etc/init/startup_script_run
-# echo exec /home/iperf-script/startup_script_run_iperf >> /etc/init/startup_script_run
-# sleep 2
 echo *******Installing Git for Odroid Screen Package******
 apt-get install git -y
 sleep 2
