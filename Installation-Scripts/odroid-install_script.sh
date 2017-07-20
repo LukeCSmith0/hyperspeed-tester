@@ -60,14 +60,9 @@ echo ******Installing cifs-utils for file mounting*******
 apt-get install cifs-utils -y
 sleep 2
 echo ******Mounting share for necessary files*******
-mkdir /mnt/python_files
-mount -t cifs -o username=root,password=hyperoptic //10.255.28.151/python_files /mnt/python_files
-sleep 2
+###change to git clone
 echo ******Copying scripts*******
 mkdir /home/iperf-script
-cp /mnt/python_files/button_script.py /home/iperf-script/button_script.py
-cp /mnt/python_files/boot.py /home/iperf-script/boot.py
-cp /mnt/python_files/execute_test_final.py /home/iperf-script/execute_test_final.py
-cp /mnt/python_files/button_shell_script.sh /home/iperf-script/button_shell_script.sh
+##change to git clone
 echo *******Setup complete*******
 sleep 2
