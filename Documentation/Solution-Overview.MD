@@ -26,3 +26,5 @@ the default location for the log files is /home/iperf. One of the main requireme
 As such as need a way to distinguish between the logs. For this we read in the contents of a particular log output, generate a hash from this data, and use that
 hash for the filename. As no two tests will be the same, for example timestamps differ, the hash should always be different. Due to the size of the MD5 hash
 we decided to take 10 characters of the hash only for the unique identification of each log.
+
+After the test is complete the test will be copied over to the IPerf server. For added security we make use of SCP for the file transfer. The script pulls the log from /home/iperf and uploads the files to the IPerf server, specifically /home/test-logs/<hashed-filename>. After this the script will display the upload and download speeds indefinetly until either the board is rebooted or the left button is pressed to restart the test.
