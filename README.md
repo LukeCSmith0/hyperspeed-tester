@@ -33,3 +33,7 @@ Requirements:
 
   ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/Screen_Output%20.jpg "")
   
+
+  ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/lintester_php.PNG "")
+  
+  ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/lintester_admin_php.PNG "")
