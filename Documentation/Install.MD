@@ -36,4 +36,39 @@ To install with the script go to the 'iperf-server-install-script.sh' in Install
 	2. Chmod file so that you can run it 'iperf-server-install-script.sh'
 
 	3. Run the iperf-server-install-script.sh file 
+	
+## IPerf Log Server Installation
+The IPerf log server is where things are a bit more tricky. This server store the logs for the tests along with the front-end interface to display them. For the server we have used a simple LAMP deployment (Apache, MySQL, PHP), however this can be changed. As such the installation guide for LAMP stack installation on Ubuntu should be followed here:
+
+* http://howtoubuntu.org/how-to-install-lamp-on-ubuntu
+
+We also made use of a basic database structure consistsing of just two tables to store all the data we need. We have the following two tables:
+
+* Engineer to board mappings
+* IPerf test results
+
+The following SQL snippets are below for both tables:
+
+```SQL
+CREATE TABLE 'engineer_mappings' (
+  'engineer_id' int(11) NOT NULL,
+  'engineer_name' varchar(255) NOT NULL,
+  'engineer_email' varchar(255) NOT NULL,
+  'board_id' varchar(255) NOT NULL
+);
+```
+```SQL
+CREATE TABLE 'testing_logs' (
+  'log_id' int(11) NOT NULL,
+  'file_hash' varchar(255) NOT NULL,
+  'timestamp' int(255) NOT NULL,
+  'connecting_to' varchar(255) NOT NULL,
+  'test_duration' varchar(255) NOT NULL,
+  'gbps_sent' varchar(255) NOT NULL,
+  'gbps_received' varchar(255) NOT NULL,
+  'board_id' varchar(255) NOT NULL,
+  'gateway_mac' varchar(255) DEFAULT NULL,
+  'peak_gbps' varchar(255) NOT NULL
+);
+```
 
