@@ -50,7 +50,7 @@ We also made use of a basic database structure consistsing of just two tables to
 The following SQL snippets are below for both tables:
 
 ```SQL
-CREATE TABLE 'engineer_mappings' (
+CREATE TABLE 'engineer_assignment' (
   'engineer_id' int(11) NOT NULL,
   'engineer_name' varchar(255) NOT NULL,
   'engineer_email' varchar(255) NOT NULL,
@@ -58,7 +58,7 @@ CREATE TABLE 'engineer_mappings' (
 );
 ```
 ```SQL
-CREATE TABLE 'testing_logs' (
+CREATE TABLE 'test_logs' (
   'log_id' int(11) NOT NULL,
   'file_hash' varchar(255) NOT NULL,
   'timestamp' int(255) NOT NULL,
