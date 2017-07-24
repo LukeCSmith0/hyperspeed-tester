@@ -24,7 +24,7 @@ In addition to the necessary packages the following scripts need to be included 
 * button_shell_script.py
 * execute_test_final.py
 
-By default all of these are stored in the /home/iperf-script folder. All of the necessary packages for the Odroid board can be found in Client-Script
+By default all of these are stored in the /home/iperf-scripts folder. All of the necessary packages for the Odroid board can be found in Client-Script
 
 ## IPerf Server Installation
 The IPerf server has a relatively small footprint in terms of required packages. The only two packages needed are the IPerf package and rssh packages.
@@ -71,4 +71,13 @@ CREATE TABLE 'test_logs' (
   'peak_gbps' varchar(255) NOT NULL
 );
 ```
+
+On top of this the only other package needed is RSSH for the RCP copies between log server and iperf server. Of importance as well is the cron jobs that are run on the server. The required cron jobs can be found in Server-Script.
+
+The following scripts are needed on the IPerf log server:
+
+* json_server_side.py
+* rsync_copy.py
+
+By default these are in the /home/iperf-scripts installation directory.
 
