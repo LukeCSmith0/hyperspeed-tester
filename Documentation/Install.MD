@@ -24,7 +24,7 @@ In addition to the necessary packages the following scripts need to be included 
 * button_shell_script.py
 * execute_test_final.py
 
-All of the necessary packages for the Odroid board can be found in Client-Script
+By default all of these are stored in the /home/iperf-script folder. All of the necessary packages for the Odroid board can be found in Client-Script
 
 ## IPerf Server Installation
 The IPerf server has a relatively small footprint in terms of required packages. The only two packages needed are the IPerf package and rssh packages.
