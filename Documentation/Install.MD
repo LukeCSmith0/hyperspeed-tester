@@ -31,7 +31,7 @@ The IPerf server has a relatively small footprint in terms of required packages.
 
 To install with the script go to the 'iperf-server-install-script.sh' in Installation-Scripts
 
-	1. Copy the script to odroid board
+	1. Copy the script to server
 
 	2. Chmod file so that you can run it 'iperf-server-install-script.sh'
 
