@@ -1,8 +1,12 @@
 <?php
   include_once("conn.php");
 
-  $sql = ("DELETE FROM engineer_assignment WHERE board_id = '" .  $_POST["nextTDs"] . "'");
-  $result = $conn->query($sql);
+  $engineer_mac = filter_var($_POST["nextTDs"], FILTER_SANITIZE_STRING);
+
+  $sql_statement = $conn->prepare("DELETE FROM engineer_assignment WHERE board_id = ?");
+  $sql_statement->bind_param("s", $engineer_mac);
+
+  $result = $sql_statement->execute();
 
   echo $sql
 ?>
