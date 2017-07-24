@@ -4,7 +4,7 @@ import time
 import os
 from uuid import getnode as get_mac
 
-script_folder = "/home/iperf"
+script_folder = "/home/iperf-script"
 
 ##This script is used to make the two buttons on the LCD screen operational
 
