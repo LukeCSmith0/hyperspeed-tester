@@ -17,3 +17,6 @@ Requirements:
   In terms of how it all fits together the image below should hopfully show you
   
   ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/Proposal.jpg "Proposal")
+
+
+  ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/Screen_Output%20.jpg "")
