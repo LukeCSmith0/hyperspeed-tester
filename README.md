@@ -14,7 +14,7 @@ Requirements:
   * Provide front-end access to test reports.
   * Separate test reports per location.
   
-  ## The Idea
+  ## The Solution
   
   In terms of how it all fits together the image below should hopfully show you
   
@@ -27,12 +27,23 @@ Requirements:
 5. Using Rsync the test log is pulled from the Iperf Server to the Web/DB Server 
    * This was done as the Iperf server in our case was public facing so it was a little more secure
 6. The log is 'prcessed by the server side python scriped and data is inserted into the mySQL table and the log is moved into a perminent storage folder
-7. Logs can be searched and viewed on the web front end
+7. Logs can be searched and viewed on the web front end where you can see:
+   * The Test ID
+   * Time & Date
+   * Engineer
+   * Upload Speed
+   * Download Speed
+   * Peak Speed
+   * Upsteam MAC Address
+   * A link to the raw JSON test file
+
+Blow you can see the odroid performing the test 
 
   ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/Tester.gif "")
 
   ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/Screen_Output%20.jpg "")
   
+And the front end!
 
   ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/lintester_php.PNG "")
   
