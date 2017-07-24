@@ -37,6 +37,8 @@ To install with the script go to the 'iperf-server-install-script.sh' in Install
 
 	3. Run the iperf-server-install-script.sh file 
 	
+Of importance as well is the cron jobs that are run on the server. The required ones can be found in Server-Script.
+	
 ## IPerf Log Server Installation
 The IPerf log server is where things are a bit more tricky. This server store the logs for the tests along with the front-end interface to display them. For the server we have used a simple LAMP deployment (Apache, MySQL, PHP), however this can be changed. As such the installation guide for LAMP stack installation on Ubuntu should be followed here:
 
