@@ -25,8 +25,11 @@ Requirements:
 3. The test ID, Upload and Download speed are displayed on the 16x2 LCD screen
 4. The test log is uploded to the 'Iperf Server' using SCP
 5. Using Rsync the test log is pulled from the Iperf Server to the Web/DB Server 
- * This was done as the Iperf server in our case was public facing so it was a little more secure
+   * This was done as the Iperf server in our case was public facing so it was a little more secure
+6. The log is 'prcessed by the server side python scriped and data is inserted into the mySQL table and the log is moved into a perminent storage folder
+7. Logs can be searched and viewed on the web front end
 
   ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/Tester.gif "")
 
   ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/Screen_Output%20.jpg "")
+  
