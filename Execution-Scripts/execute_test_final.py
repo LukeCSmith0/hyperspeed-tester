@@ -20,6 +20,7 @@ from scp import SCPClient
 
 ##Set the hostname of the iperf server to perform tests againsts
 hostname = "0.0.0.0"
+log_files = "/home/iperf"
 
 #Define global variables
 sent_gbps = ""
@@ -130,7 +131,7 @@ def testIperfSocket() :
 
 def copySCPfiles(hashed_file_name):
     #Specify the location of the log file
-    hashed_file_path = "/home/iperf/" + hashed_file_name
+    hashed_file_path = log_files + "/" + hashed_file_name
     ssh = SSHClient()
     ssh.load_system_host_keys()
     #Will allow SSH keys if they are missing
@@ -166,7 +167,7 @@ def get_dg_mac():
 ##Function will take the returned JSON and append new required values on the end
 def edit_json(hashed_file_name, gateway_mac) :
     ##Open the file and read the contents
-    file_path = "/home/iperf/" + hashed_file_name
+    file_path = log_files + "/" + hashed_file_name
     f = open(file_path, 'r')
     file_contents = f.read()
     f.close()
@@ -205,12 +206,12 @@ def runTest() :
     json_output = procId.stdout
 
     ##Write the JSON to the file
-    f = open('/home/iperf/results.json', 'w+')
+    f = open(log_files + '/results.json', 'w+')
     string_to_write = str(json_output)
     f.write(string_to_write)
     f.close()
 
-    file_name = "/home/iperf/results.json"
+    file_name = log_files + "/results.json"
 
     ##Open the JSON file just created
     with open(file_name) as json_data:
@@ -242,9 +243,9 @@ def runTest() :
 
     ##Take the last 10 characters from the hash to make it shorter
     hash_name = md5_hash[:10]
-    new_hash_name = "/home/iperf/" + hash_name.upper()
+    new_hash_name = log_files + "/" + hash_name.upper()
     ##Rename the file from results.json to the generated hash to uniquely identify the hash
-    shutil.move("/home/iperf/results.json", new_hash_name)
+    shutil.move(log_files + "/results.json", new_hash_name)
 
     lowerHash = md5_hash[:10]
     ##Convert the hash to uppercase for nicer viewing
