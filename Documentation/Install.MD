@@ -83,3 +83,7 @@ The following scripts are needed on the IPerf log server:
 
 By default these are in the /home/iperf-scripts installation directory.
 
+For the front-end we used Semantic for the stlying of the webpage. If using the same webpage this will need to be installed as well. This can be done through the information from Semantic here:
+
+* https://semantic-ui.com/introduction/getting-started.html
+
