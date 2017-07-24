@@ -13,4 +13,3 @@
 
   $result = $sql_statement->execute();
 ?>
-  <meta http-equiv="refresh" content="0; url=admin.php" />
