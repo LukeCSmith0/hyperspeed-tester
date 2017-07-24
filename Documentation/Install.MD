@@ -15,7 +15,16 @@ To install with the script go to the 'odroid-install_script.sh' in Installation-
 
 	2. Chmod file so that you can run it 'chmod u+x odroid-install_script.sh'
 
-	3. Run the odroid-install_script.sh file 
+	3. Run the odroid-install_script.sh file
+	
+In addition to the necessary packages the following scripts need to be included on the Odroid board:
+
+* boot.py
+* button_script.py
+* button_shell_script.py
+* execute_test_final.py
+
+All of the necessary packages for the Odroid board can be found in Client-Script
 
 ## IPerf Server Installation
 The IPerf server has a relatively small footprint in terms of required packages. The only two packages needed are the IPerf package and rssh packages.
