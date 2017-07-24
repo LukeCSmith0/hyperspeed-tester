@@ -1,6 +1,8 @@
 # Odroid C2 Line Tester
 This is a repository for a portable line tester project. All relevant information can be found in the Documentation folder.
 
+**What we are... Networking university students, What we are not... Coders!** We know that this isn't the best int terms of code quality but if you can/want to improve the code let us know!
+
 ## The Aim
 
 To create a portable, cost effective traffic generator that can be used to perform line tests up to a
