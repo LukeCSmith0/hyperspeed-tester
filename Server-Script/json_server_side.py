@@ -59,10 +59,10 @@ def run_script():
         #In this loop we are inserting all the data into the database
 
         #Server Connection to MySQL params
-        conn = MySQLdb.connect(host= "localhost",
-                          user="iperf",
-                          passwd="hyperoptic",
-                          db="iperf-testing")
+        conn = MySQLdb.connect(host= "db-host",
+                          user="db-user",
+                          passwd="db-passwd",
+                          db="db-name")
         x = conn.cursor()
         #Try Except statment to catch if the insert was sucsessful or not
         #If it was not then it rolls back
