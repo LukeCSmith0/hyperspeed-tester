@@ -113,3 +113,6 @@ The scripts on this repository use placeholders for various values that need to 
 * Hostname - The hostname of the IPerf server that the tests will be run against.
 * SCP_Username - On the Odroid boards SCP is used to copy the files to the IPerf server. The username needs to be changed to the one that has been created on the IPerf server for this purpose.
 
+The following needs to be changed in json_server_side.py:
+
+* DB Information - For the DB connection the necessary information for the database being used need to be substituted such as database name, password, username etc.
