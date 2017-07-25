@@ -19,7 +19,7 @@ sleep 2
 pip install iperf3
 echo *******Installing required files for SCP*******
 sleep 2
-apt-get install libffi6 libffi-dev
+apt-get install libffi6 libffi-dev -y
 echo *******Installing ARP module for Python*******
 sleep 2
 pip install python_arptable
@@ -29,6 +29,7 @@ pip install netifaces
 echo *******Creating directory for iperf files*******
 sleep 2
 mkdir /home/iperf
+mkdir /home/iperf-scripts
 sleep 2
 echo *******Installing Git for Odroid Screen Package******
 apt-get install git -y
@@ -56,11 +57,7 @@ echo *******Setting Cron to execute on startup for script execution********
 (crontab -l 2>/dev/null; echo "@reboot python /home/iperf-script/button_script.py") | crontab -
 (crontab -l 2>/dev/null; echo "@reboot python /home/iperf-script/boot.py") | crontab -
 (crontab -l 2>/dev/null; echo "@reboot sleep 30; python /home/iperf-script/execute_test_final.py") | crontab -
-echo ******Installing cifs-utils for file mounting*******
-apt-get install cifs-utils -y
-sleep 2
 echo ******Copying scripts*******
-mkdir /home/iperf-script
 wget -O /home/iperf-scripts/execute_test_final.py https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Client-Script/execute_test_final.py
 wget -O /home/iperf-scripts/boot.py https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Client-Script/boot.py
 wget -O /home/iperf-scripts/button_script.py https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Client-Script/button_script.py
