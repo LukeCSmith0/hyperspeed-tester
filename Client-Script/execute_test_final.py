@@ -131,7 +131,7 @@ def testIperfSocket() :
 
 
 def copySCPfiles(hashed_file_name):
-    hashed_file_path = log_files + /" + hashed_file_name
+    hashed_file_path = log_files + "/" + hashed_file_name
     ssh = SSHClient()
     ssh.load_system_host_keys()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
