@@ -135,7 +135,7 @@ def copySCPfiles(hashed_file_name):
     ssh = SSHClient()
     ssh.load_system_host_keys()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(hostname, username="linetester")
+    ssh.connect(hostname, username="username")
     scp = SCPClient(ssh.get_transport())
     scp.put(hashed_file_path, hashed_file_path)
     scp.close()
