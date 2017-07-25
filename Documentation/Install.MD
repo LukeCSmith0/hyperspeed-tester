@@ -38,7 +38,7 @@ To install with the script go to the 'iperf-server-install-script.sh' in Install
 
 	1. Copy the script to server - https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Installation-Scripts/iperf-server-install-script.sh
 
-	2. Chmod file so that you can run it 'iperf-server-install-script.sh'
+	2. Chmod file so that you can run it 'chmod u+x iperf-server-install-script.sh'
 
 	3. Run the iperf-server-install-script.sh file 
 	
@@ -90,7 +90,7 @@ To install:
 
 	1. Copy the script to server - https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Installation-Scripts/iperf-log-server-install-script.sh
 
-	2. Chmod file so that you can run it 'iperf-log-server-install-script.sh'
+	2. Chmod file so that you can run it 'chmod u+x iperf-log-server-install-script.sh'
 
 	3. Run the iperf-log-server-install-script.sh file 
 
