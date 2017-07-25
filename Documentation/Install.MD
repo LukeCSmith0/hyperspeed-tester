@@ -16,7 +16,7 @@ These can be changed freely but will be created in the install script.
 
 To install with the script go to the 'odroid-install_script.sh' in Installation-Scripts
 
-	1. Copy the script to odroid board
+	1. Copy the script to odroid board - wget https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Installation-Scripts/odroid-install_script.sh
 
 	2. Chmod file so that you can run it 'chmod u+x odroid-install_script.sh'
 
