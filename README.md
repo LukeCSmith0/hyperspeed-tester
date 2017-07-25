@@ -18,7 +18,7 @@ Requirements:
   
   ## The Solution
   
-  In terms of how it all fits together the image below should hopefully show you
+  In terms of how it all fits together the image below should hopefully show you:
   
   ![alt text](https://github.com/LukeCSmith0/hyperspeed-tester/blob/master/Documentation/Pictures/Proposal.jpg "Proposal")
 
