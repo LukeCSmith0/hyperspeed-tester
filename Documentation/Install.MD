@@ -36,7 +36,7 @@ The IPerf server has a relatively small footprint in terms of required packages.
 
 To install with the script go to the 'iperf-server-install-script.sh' in Installation-Scripts
 
-	1. Copy the script to server
+	1. Copy the script to server - https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Installation-Scripts/iperf-server-install-script.sh
 
 	2. Chmod file so that you can run it 'iperf-server-install-script.sh'
 
@@ -85,6 +85,15 @@ The following scripts are needed on the IPerf log server:
 
 * json_server_side.py
 * rsync_copy.py
+
+To install: 
+
+	1. Copy the script to server - https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Installation-Scripts/iperf-log-server-install-script.sh
+
+	2. Chmod file so that you can run it 'iperf-log-server-install-script.sh'
+
+	3. Run the iperf-log-server-install-script.sh file 
+
 
 By default these are in the /home/iperf-scripts installation directory.
 
