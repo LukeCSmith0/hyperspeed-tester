@@ -1,5 +1,5 @@
 # On-screen Messages
-The Odroid board is programmmed to display various messages at different stages of the testing process. The following explain what each mean, the majority are self explanatory
+The Odroid board is programmmed to display various messages at different stages of the testing process. The following explain what each mean, the majority are self explanatory:
 
 * Ping Test Executing
   * The Odroid board is performing an ICMP connectivity test to the IPerf server
