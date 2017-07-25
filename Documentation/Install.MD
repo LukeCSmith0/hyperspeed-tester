@@ -49,7 +49,7 @@ The IPerf log server is where things are a bit more tricky. This server store th
 
 * http://howtoubuntu.org/how-to-install-lamp-on-ubuntu
 
-We also made use of a basic database structure consistsing of just two tables to store all the data we need. We have the following two tables:
+We also made use of a basic database structure consisting of just two tables to store all the data we need. We have the following two tables:
 
 * Engineer to board mappings
 * IPerf test results
