@@ -14,9 +14,6 @@ pip install paramiko
 echo *******Installing SCP*******
 sleep 2
 pip install scp
-echo *******Installing Iperf3 Python Wrapper*******
-sleep 2
-pip install iperf3
 echo *******Installing required files for SCP*******
 sleep 2
 apt-get install libffi6 libffi-dev -y
