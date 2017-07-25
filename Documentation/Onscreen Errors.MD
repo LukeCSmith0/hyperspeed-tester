@@ -20,5 +20,6 @@ The Odroid board is programmmed to display various messages at different stages 
    * This will show the default gateway MAC address of the Odroid board. This is needed for some additional information gathering server side.
  * Test Copied to Server
    * The test has been successfully copied via SCP to the IPerf server.
+   * It is possible that at this stage the Odroid will report that it was unable to copy the test to the server. In this case the test will restart. As the test was unable to be copied the test results will not be available to view at a later time.
  * Test ID
    * This will show the test ID of the test just performed. This can be used to view the test results at a later time on the web front end.
