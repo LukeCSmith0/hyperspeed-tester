@@ -50,6 +50,9 @@ git clone https://github.com/google/python-subprocess32
 cd python-subprocess32
 python setup.py install
 sleep 2
+echo *******Installing OpenSSH Server********
+apt-get install openssh-server -y
+sleep 2
 echo *******Setting Cron to execute on startup for script execution********
 (crontab -l 2>/dev/null; echo "@reboot python /home/iperf-scripts/button_script.py") | crontab -
 (crontab -l 2>/dev/null; echo "@reboot python /home/iperf-scripts/boot.py") | crontab -
