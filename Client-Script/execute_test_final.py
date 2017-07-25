@@ -255,7 +255,7 @@ def runTest() :
 
     ##Take the last 10 characters from the hash to make it shorter
     hash_name = md5_hash[:10]
-    new_hash_name = log_fiels + "/" + hash_name.upper()
+    new_hash_name = log_files + "/" + hash_name.upper()
     print new_hash_name
     ##Rename the file from results.json to the generated hash to uniquely identify the hash
     shutil.move(log_files + "/results.json", new_hash_name)
