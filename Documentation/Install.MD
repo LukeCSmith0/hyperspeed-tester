@@ -101,3 +101,15 @@ For the front-end we used Semantic for the stlying of the webpage. If using the 
 
 * https://semantic-ui.com/introduction/getting-started.html
 
+## Additional Configurations
+There are a couple of items that require manual configurations depending on the environment. The following needs to be done:
+
+* Copying between the Odroid and the IPerf server is done using SCP. In order to do this we use a specific user on the IPerf server dedicated to the copying from the Odroid boards. The user for this needs to be created on the IPerf server. We use public and private keys for authentication however this can be changed.
+* Copying between the IPerf Server and Iperf Log Server is very similar. We use RCP to copy the files from the IPerf server using a dedicated account for this purpose. Therefore the account needs to be created on the IPerf server for this. Again we use public and private keys for authentication with this account but this can be changed.
+
+## Script Changes
+The scripts on this repository use placeholders for various values that need to be assigned in accordance with the environment in which it is run. The following need to be updated in execute_test_final.py:
+
+* Hostname - The hostname of the IPerf server that the tests will be run against.
+* SCP_Username - On the Odroid boards SCP is used to copy the files to the IPerf server. The username needs to be changed to the one that has been created on the IPerf server for this purpose.
+
