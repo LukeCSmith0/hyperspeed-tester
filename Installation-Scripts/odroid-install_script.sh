@@ -51,9 +51,9 @@ cd python-subprocess32
 python setup.py install
 sleep 2
 echo *******Setting Cron to execute on startup for script execution********
-(crontab -l 2>/dev/null; echo "@reboot python /home/iperf-script/button_script.py") | crontab -
-(crontab -l 2>/dev/null; echo "@reboot python /home/iperf-script/boot.py") | crontab -
-(crontab -l 2>/dev/null; echo "@reboot sleep 30; python /home/iperf-script/execute_test_final.py") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot python /home/iperf-scripts/button_script.py") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot python /home/iperf-scripts/boot.py") | crontab -
+(crontab -l 2>/dev/null; echo "@reboot sleep 30; python /home/iperf-scripts/execute_test_final.py") | crontab -
 echo ******Copying scripts*******
 wget -O /home/iperf-scripts/execute_test_final.py https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Client-Script/execute_test_final.py
 wget -O /home/iperf-scripts/boot.py https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Client-Script/boot.py
