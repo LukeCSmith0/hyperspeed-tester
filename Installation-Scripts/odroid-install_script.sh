@@ -62,7 +62,7 @@ wget -O /home/iperf-scripts/execute_test_final.py https://raw.githubusercontent.
 wget -O /home/iperf-scripts/boot.py https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Client-Script/boot.py
 wget -O /home/iperf-scripts/button_script.py https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Client-Script/button_script.py
 wget -O /home/iperf-scripts/button_shell_script.sh https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Client-Script/button_shell_script.sh
-chmod +x /home/iperf_scripts/button_shell_script.sh
+chmod +x /home/iperf-scripts/button_shell_script.sh
 sleep 2
 echo *******Setup complete*******
 sleep 2
