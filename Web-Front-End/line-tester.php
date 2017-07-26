@@ -50,15 +50,21 @@ include_once("conn.php");
 </head>
 <body>
       <div class="ui grid">
+
         <div class="ui stacked grey eight wide column">
 
-              <p class="main_title">Line Tester Panel</p>
+          <p class="main_title">Line Tester Panel</p>
         </div>
 
           <div class="ui stacked grey eight wide column center aligned">
             <div class="btn_padding">
-                <button class="ui primary button" onclick="location.href='admin.php'">
-                Admin
+                <?php
+                  if (!isset($_GET["test-id"]))
+                  {
+                    echo "<button class=\"ui primary button\" onclick=\"location.href='admin.php'\">";
+                    echo "Admin";
+                  }
+                ?>
               </button>
             </div>
           </div>
@@ -137,7 +143,7 @@ include_once("conn.php");
           ?>
       </tbody>
       <tfoot>
-        <tr><th colspan="8">
+        <tr><th colspan="9">
           <div class="ui grid">
             <div class="four wide column center aligned">
                 <p><i class="archive icon"></i><b class="num_row_amount"><?php echo $num_rows; ?></b> Test Results</p>
@@ -209,20 +215,22 @@ $(document).ready(function(){
           seconds = "0" + seconds;
         }
 
-        var formatted_time = hour + ":" + minutes + ":" + seconds;
+        var formatted_time = hour + ":" + minutes;
 
         $(".result_tbody").append("<tr>");
         var hash_to_append = "<td>" + json_result[x][1] + "</td>";
         $(".result_tbody").append(hash_to_append);
         $(".result_tbody").append("<td>" + formatted_time + "</td>");
         $(".result_tbody").append("<td>" + formatted_date + "</td>");
-        var engineer_to_append = "<td>" + json_result[x][9] + "</td>";
+        var engineer_to_append = "<td>" + json_result[x][11] + "</td>";
         $(".result_tbody").append(engineer_to_append);
         var upload_to_append = "<td><i class='arrow circle up icon'></i>" + json_result[x][5] + "</td>";
         $(".result_tbody").append(upload_to_append);
         var download_to_append = "<td><i class='arrow circle down icon'></i>" + json_result[x][6] + "</td>";
         $(".result_tbody").append(download_to_append);
-        var mac_to_append = "<td>" + json_result[x][11] + "</td>";
+        var peak_to_append = "<td><i class='line chart icon'></i>" + json_result[x][9] + "</td>";
+        $(".result_tbody").append(peak_to_append);
+        var mac_to_append = "<td>" + json_result[x][13] + "</td>";
         $(".result_tbody").append(mac_to_append);
         var save_to_append = "<td><a href=\"/test-logs/" + json_result[x][1] + "\" download><i class='large save icon'></i></a></td>";
         $(".result_tbody").append(save_to_append);
