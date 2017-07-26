@@ -4,7 +4,7 @@ import time
 import os
 from uuid import getnode as get_mac
 
-script_folder = "/home/iperf-script"
+script_folder = "/home/iperf-scripts"
 
 ##This script is used to make the two buttons on the LCD screen operational
 
@@ -52,7 +52,7 @@ while (1 == 1):
     if wiringpi2.digitalRead(5) == 0:
         ScreenOutput("Stopping Script", "Please Wait...")
         ##Launch shell script to terminate any running testing scriipts
-        subprocess.call([script_folder + "/button_shell_script"])
+        subprocess.call([script_folder + "/button_shell_script.sh"])
         time.sleep(3)
         ScreenOutput("Restart Script", "Please Wait...")
         time.sleep(3)

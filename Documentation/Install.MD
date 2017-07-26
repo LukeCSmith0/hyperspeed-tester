@@ -29,7 +29,7 @@ In addition to the necessary packages the following scripts need to be included 
 * button_shell_script.py
 * execute_test_final.py
 
-By default all of these are stored in the /home/iperf-scripts folder. All of the necessary packages for the Odroid board can be found in Client-Script
+By default all of these are stored in the /home/iperf-scripts folder. All of the necessary packages for the Odroid board can be found in Client-Script. They are all installed as part of the install script and do not need to be manually put on there.
 
 ## IPerf Server Installation
 The IPerf server has a relatively small footprint in terms of required packages. The only two packages needed are the IPerf package and rssh packages.
@@ -49,7 +49,7 @@ The IPerf log server is where things are a bit more tricky. This server store th
 
 * http://howtoubuntu.org/how-to-install-lamp-on-ubuntu
 
-We also made use of a basic database structure consistsing of just two tables to store all the data we need. We have the following two tables:
+We also made use of a basic database structure consisting of just two tables to store all the data we need. We have the following two tables:
 
 * Engineer to board mappings
 * IPerf test results
@@ -101,3 +101,18 @@ For the front-end we used Semantic for the stlying of the webpage. If using the 
 
 * https://semantic-ui.com/introduction/getting-started.html
 
+## Additional Configurations
+There are a couple of items that require manual configurations depending on the environment. The following needs to be done:
+
+* Copying between the Odroid and the IPerf server is done using SCP. In order to do this we use a specific user on the IPerf server dedicated to the copying from the Odroid boards. The user for this needs to be created on the IPerf server. We use public and private keys for authentication however this can be changed.
+* Copying between the IPerf Server and Iperf Log Server is very similar. We use RCP to copy the files from the IPerf server using a dedicated account for this purpose. Therefore the account needs to be created on the IPerf server for this. Again we use public and private keys for authentication with this account but this can be changed.
+
+## Script Changes
+The scripts on this repository use placeholders for various values that need to be assigned in accordance with the environment in which it is run. The following need to be updated in execute_test_final.py:
+
+* Hostname - The hostname of the IPerf server that the tests will be run against.
+* SCP_Username - On the Odroid boards SCP is used to copy the files to the IPerf server. The username needs to be changed to the one that has been created on the IPerf server for this purpose.
+
+The following needs to be changed in json_server_side.py:
+
+* DB Information - For the DB connection the necessary information for the database being used need to be substituted such as database name, password, username etc.
