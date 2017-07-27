@@ -89,6 +89,9 @@ include_once("conn.php");
         <th>Download (Mbps)</th>
         <th>Peak (Mbps)</th>
         <th>MAC Address</th>
+        <th>Switch Port Number</th>
+        <th>Switch IP Address</th>
+        <th>Switch Name</th>
         <th>JSON</th>
       </tr></thead>
       <tbody class="result_tbody">
@@ -131,6 +134,9 @@ include_once("conn.php");
                   . $row["peak_gbps"]
                   . "</td>";
               echo "<td>" . $row["board_id"] . "</td>";
+              echo "<td>" . $row["switchPortNumber"] . "</td>";
+              echo "<td>" . $row["switchIPAddress"] . "</td>";
+              echo "<td>" . $row["switchName"] . "</td>";
               echo "<td>
                     <a href=\"/test-logs/" . $row["file_hash"] .
                     "\" download>
