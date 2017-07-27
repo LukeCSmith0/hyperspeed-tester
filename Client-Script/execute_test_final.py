@@ -196,7 +196,7 @@ def runTest() :
 
     ##Try and execute the IPerf test. Specifies a timeout of 14 seconds for the IPerf connection
     try:
-        procId = subprocess.run(["iperf3","-c", hostname, "-J", "-t", "15" ], stdout=subprocess.PIPE, timeout=20)
+        procId = subprocess.run(["iperf3","-c", hostname, "-J", "-t", "15" ], stdout=subprocess.PIPE, timeout=30)
         print hostname
     ##Raise an error if the timeout expires and re-run the test
     except subprocess.TimeoutExpired:
@@ -231,7 +231,7 @@ def runTest() :
             speed_interval_list.append(var)
             counter = counter+1
         peak = max(speed_interval_list)
-        peak = peak / 1000000000
+        peak = peak / 1000000
 
     ##Display the error if the server is busy if the JSON is not complete
     except:
@@ -241,8 +241,8 @@ def runTest() :
         executeTesting()
 
     ##Convert the bps into gbps
-    sent_gbps = sent_bps / 1000000000
-    received_gbps = received_bps / 1000000000
+    sent_gbps = sent_bps / 1000000
+    received_gbps = received_bps / 1000000
     print str(sent_gbps)
     print str(received_gbps)
     ScreenOutput('Speed Test', 'Finished')
