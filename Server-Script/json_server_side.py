@@ -99,13 +99,13 @@ def run_script():
             <br>
                 Your test ID link is:  <link to frontend>
                 <ul><li>
-                        Upload was: %s Gbps
+                        Upload was: %s Mbps
                     </li>
                     <li>
-                        Download was: %s Gpbs
+                        Download was: %s Mpbs
                     </li>
                     <li>
-                        Peak speed was: %s Gpbs
+                        Peak speed was: %s Mpbs
                     </li>
                 </ul>
             <br>
