@@ -85,9 +85,9 @@ include_once("conn.php");
         <th>Time</th>
         <th>Date</th>
         <th>Engineer</th>
-        <th>Upload</th>
-        <th>Download</th>
-        <th>Peak</th>
+        <th>Upload (Mbps)</th>
+        <th>Download (Mbps)</th>
+        <th>Peak (Mbps)</th>
         <th>MAC Address</th>
         <th>JSON</th>
       </tr></thead>
