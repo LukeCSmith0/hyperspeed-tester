@@ -1,6 +1,7 @@
 ## The following Cron jobs are running on the log server:
 
 * \* \* \* \* \* python <path-to-script-folder>/json_server_side.py
+* \* \* \* \* \* python <path-to-script-folder>/switch_information_check.py
 * \* \* \* \* \* rsync -avz --remove-source-files -e ssh rsync@X.X.X.X:/home/iperf /home
 * \* \* \* \* \* ( sleep 10; rsync -avz --remove-source-files -e ssh rsync@X.X.X.X:/home/iperf /home )
 * \* \* \* \* \* ( sleep 20; rsync -avz --remove-source-files -e ssh rsync@X.X.X.X:/home/iperf /home )
