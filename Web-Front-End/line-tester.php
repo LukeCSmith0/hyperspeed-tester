@@ -224,25 +224,17 @@ $(document).ready(function(){
         }
 
         var formatted_time = hour + ":" + minutes;
-
-        $(".result_tbody").append("<tr>");
-        var hash_to_append = "<td>" + json_result[x][1] + "</td>";
-        $(".result_tbody").append(hash_to_append);
-        $(".result_tbody").append("<td>" + formatted_time + "</td>");
-        $(".result_tbody").append("<td>" + formatted_date + "</td>");
-        var engineer_to_append = "<td>" + json_result[x][11] + "</td>";
-        $(".result_tbody").append(engineer_to_append);
-        var upload_to_append = "<td><i class='arrow circle up icon'></i>" + json_result[x][5] + "</td>";
-        $(".result_tbody").append(upload_to_append);
-        var download_to_append = "<td><i class='arrow circle down icon'></i>" + json_result[x][6] + "</td>";
-        $(".result_tbody").append(download_to_append);
-        var peak_to_append = "<td><i class='line chart icon'></i>" + json_result[x][9] + "</td>";
-        $(".result_tbody").append(peak_to_append);
-        var mac_to_append = "<td>" + json_result[x][13] + "</td>";
-        $(".result_tbody").append(mac_to_append);
+        var hash_to_append = "<td>" + json_result[x][1] + "</td>"
+        var engineer_to_append = "<td>" + json_result[x][11] + "</td>"
+        var upload_to_append = "<td><i class='arrow circle up icon'></i>" + json_result[x][5] + "</td>"
+        var download_to_append = "<td><i class='arrow circle down icon'></i>" + json_result[x][6] + "</td>"
+        var peak_to_append = "<td><i class='line chart icon'></i>" + json_result[x][9] + "</td>"
+        var mac_to_append = "<td>" + json_result[x][13] + "</td>"
+        var switchport_to_append = "<td>" + json_result[x][10] + "</td>";
+        var switchaddress_to_append = "<td>" + json_result[x][11] + "</td>";
+        var switchname_to_append = "<td>" + json_result[x][12] + "</td>";
         var save_to_append = "<td><a href=\"/test-logs/" + json_result[x][1] + "\" download><i class='large save icon'></i></a></td>";
-        $(".result_tbody").append(save_to_append);
-        $(".result_tbody").append("/<tr>");
+        var full_string = "<tr>" + hash_to_append + "<td>" + formatted_time + "</td>" + "<td>" + formatted_date + "</td>" + engineer_to_append + upload_to_append + download_to_append + peak_to_append + mac_to_append + switchport_to_append + switchaddress_to_append + switchname_to_append + save_to_append + "</tr>";
 
       }
     })
