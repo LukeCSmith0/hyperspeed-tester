@@ -61,7 +61,13 @@ def run_script():
         sent_gbps = round(sent_gbps, 2)
         received_gbps = round(received_gbps, 2)
         peak_gbps = round(peak_gbps, 2)
+        
+        r = requests.get('<API Address>')
+        switchPortNumber = ""
+        switchIpAddress = ""
+        switchName = ""
 
+        #In this loop we are inserting all the data into the database
         #In this loop we are inserting all the data into the database
 
         #Server Connection to MySQL params
@@ -70,6 +76,14 @@ def run_script():
                           passwd="db-pass",
                           db="db-name")
         x = conn.cursor()
+        if r.status_code != 200:
+                x.execute("INSERT INTO switch_information VALUES (%s, %s)", (hash_value, gateway_mac))
+        else:
+                returned = r.json()
+                switchPortNumber = returned['portNumber']
+                switchIpAddress =  returned['ipAddress']
+                switchName =  returned['switchName']
+
         #Try Except statment to catch if the insert was sucsessful or not
         #If it was not then it rolls back
         try:
