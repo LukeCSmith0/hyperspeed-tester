@@ -1,3 +1,6 @@
+echo *******Updating Repositories*******
+sleep 2
+apt-get update
 echo *******Installing RSSH for RCP Pulls*******
 sleep 2
 apt-get install rssh -y
