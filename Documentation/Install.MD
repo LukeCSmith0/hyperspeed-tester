@@ -85,6 +85,7 @@ The following scripts are needed on the IPerf log server:
 
 * json_server_side.py
 * rsync_copy.py
+* switch_information_check.py
 
 To install: 
 
