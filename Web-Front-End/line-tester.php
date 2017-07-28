@@ -36,6 +36,8 @@ include_once("conn.php");
   </style>
 
   <title>Speed Test</title>
+  <link rel="shortcut icon" href="images/favicon.ico" type="images/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="images/x-icon">
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
   <script
     src="https://code.jquery.com/jquery-3.1.1.min.js"
