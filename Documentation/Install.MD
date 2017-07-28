@@ -117,3 +117,9 @@ The scripts on this repository use placeholders for various values that need to 
 The following needs to be changed in json_server_side.py:
 
 * DB Information - For the DB connection the necessary information for the database being used need to be substituted such as database name, password, username etc.
+
+The following needs to be changed in switch_information_check.py;
+
+* DB Information - For the DB connection the necessary information for the database being used need to be substituted such as database name, password, username etc.
+* API Address - Address for the API call to obtain the switch information.
+* API Token - If there is any authorization tokens required for the API this has to be substituted in.
