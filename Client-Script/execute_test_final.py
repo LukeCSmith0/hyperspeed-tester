@@ -169,6 +169,12 @@ def edit_json(hashed_file_name, gateway_mac) :
     file_contents = f.read()
     f.close()
 
+    ##Grab the IP address of the CPE device
+    url_to_send = "http://" + hostname + ":6729/whats-my-ip.php"
+    json_ip_address = requests.get(url_to_send).json()
+    gateway_ip = json_ip_address["ip"]
+
+    
     ##Obtain the MAC address of the board
     board_mac = get_mac()
     ##Format the MAC address into a common form
@@ -178,7 +184,7 @@ def edit_json(hashed_file_name, gateway_mac) :
     ##Load in the contents of the file and convert to a JSON object
     json_file_contents = json.loads(file_contents)
     ##Add the new JSON values onto the end, the boards MAC address, the file hash, and the gateway MAC
-    json_file_contents["end"]["host_information"] = {"mac_address": formatted_board_mac, "hash": hashed_file_name, "gateway_mac": gateway_mac}
+    json_file_contents["end"]["host_information"] = {"mac_address": formatted_board_mac, "hash": hashed_file_name, "gateway_mac": gateway_mac, "gateway_ip": gateway_ip}
 
     ##Dump the new JSON information into the file
     json.dump(json_file_contents, open(file_path, "w"))
