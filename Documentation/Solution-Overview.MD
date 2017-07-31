@@ -34,6 +34,9 @@ The gateway MAC is used for some requirements to determine device mappings. The 
 After the test is complete the test will be copied over to the IPerf server. For added security we make use of SCP for the file transfer. The script pulls the log from /home/iperf and uploads the files to the IPerf server, specifically /home/test-logs/<hashed-filename>. After this the script will display the upload and download speeds indefinetly until either the board is rebooted or the left button is pressed to restart the test.
 ## IPerf Server
 The actual IPerf server has a relatively simple role. The Cron job that runs will ensure that the IPerf3 server daemon is running causing the server to listen on port 5201 for connection requests from the Odroid boards. The Odroid boards will be the ones copying the files onto the server. The IPerf server has a public address to ensure a proper test is performed.
+
+One service that we are running on the IPerf server is the whats my IP address page. In order to obtain the information on the switch a particular tester is connected to we needed a fallback for when we cannot get the MAC address of CPEs outside interface. Therefore we utilise the whats my ip service to determine what the IP address is before any NAT translations so we can pass this to our API that will return the switch information.
+
 ## IPerf Log Server
 The IPerf log server is the final storage location for the test logs. We use a number of different cron jobs to perform the various tasks required of the server. In order to get the logs we used a handful of cron jobs for RCP that will copy logs every 10 seconds. The IPerf log server will copy the logs files from /home/test-logs on the IPerf server to the /home/iperf directory on the IPerf log server. In order to save space on the IPerf test server we remove the files once copied.
 
