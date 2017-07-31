@@ -47,6 +47,7 @@ def run_script():
         mac_address =  jdata['end']['host_information']['mac_address']
         hash_value = jdata['end']['host_information']['hash']
         gateway_mac = jdata['end']['host_information']['gateway_mac']
+        gateway_ip = jdata['end']['host_information']['gateway_ip']
         peak = max(speed_interval_list)
         #Set the time stamp to the server time
         timestamp_ = calendar.timegm(time.gmtime())
@@ -77,7 +78,7 @@ def run_script():
                           db="db-name")
         x = conn.cursor()
         if r.status_code != 200:
-                x.execute("INSERT INTO switch_information VALUES (%s, %s)", (hash_value, gateway_mac))
+                x.execute("INSERT INTO switch_information VALUES (%s, %s, %s)", (hash_value, gateway_mac, gateway_ip))
         else:
                 returned = r.json()
                 switchPortNumber = returned['portNumber']
@@ -87,7 +88,7 @@ def run_script():
         #Try Except statment to catch if the insert was sucsessful or not
         #If it was not then it rolls back
         try:
-            x.execute("INSERT INTO test_logs VALUES (Null, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (hash_value, timestamp_, connecting_to, test_duration, sent_gbps, received_gbps, mac_address, gateway_mac, peak_gbps))
+            x.execute("INSERT INTO test_logs VALUES (Null, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (hash_value, timestamp_, connecting_to, test_duration, sent_gbps, received_gbps, mac_address, gateway_mac, gateway_ip, peak_gbps))
             x.execute("SELECT engineer_email FROM engineer_assignment WHERE board_id = %s" % mac_address_q)
             eng_email_select = x.fetchall()
 
