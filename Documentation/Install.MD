@@ -43,6 +43,12 @@ To install with the script go to the 'iperf-server-install-script.sh' in Install
 	3. Run the iperf-server-install-script.sh file 
 	
 Of importance as well is the cron jobs that are run on the server. The required ones can be found in Server-Script.
+
+In addition to the required applications the following scripts need to be on the IPerf server:
+
+* whats-my-ip/whats-my-ip.py
+
+The script above is the flask application that returns in JSON format the IP address the request was from. In other words the clients address.
 	
 ## IPerf Log Server Installation
 The IPerf log server is where things are a bit more tricky. This server store the logs for the tests along with the front-end interface to display them. For the server we have used a simple LAMP deployment (Apache, MySQL, PHP), however this can be changed. As such the installation guide for LAMP stack installation on Ubuntu should be followed here:
