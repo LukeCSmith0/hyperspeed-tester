@@ -14,5 +14,9 @@ apt-get install python-pip
 echo *******Installing Flask*******
 sleep 2
 pip install flask
+echo *******Creating the required directories for scripts and pulling scripts*******
+sleep 2
+mkdir /home/whats-my-ip
+wget -O /home/whats-my-ip https://raw.githubusercontent.com/LukeCSmith0/hyperspeed-tester/master/Server-Script/whats-my-ip/whats-my-ip.py
 echo *******Setup complete*******
 sleep 2
