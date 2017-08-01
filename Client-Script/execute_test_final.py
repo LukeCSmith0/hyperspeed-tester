@@ -171,8 +171,11 @@ def edit_json(hashed_file_name, gateway_mac) :
 
     ##Grab the IP address of the CPE device
     url_to_send = "http://" + hostname + ":6729/whats-my-ip.php"
-    json_ip_address = requests.get(url_to_send).json()
-    gateway_ip = json_ip_address["ip"]
+    try:
+        json_ip_address = requests.get(url_to_send).json()
+        gateway_ip = json_ip_address["ip"]
+    except:
+        gateway_ip = "Unknown"
 
     
     ##Obtain the MAC address of the board
