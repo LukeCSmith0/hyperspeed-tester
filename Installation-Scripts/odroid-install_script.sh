@@ -44,6 +44,9 @@ echo *******Building Screen Package*******
 swig3.0 -python -threads wiringpi.i
 sudo python setup.py build install
 sleep 2
+echo *******Installing Ookla Speedtest for Python********
+pip install speedtest-cli
+sleep 2
 echo *******Importing subprocess module for Python********
 cd /home
 git clone https://github.com/google/python-subprocess32
