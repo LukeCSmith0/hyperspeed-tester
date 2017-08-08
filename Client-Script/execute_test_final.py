@@ -155,10 +155,8 @@ def get_dg_mac():
     ##Loop through each ARP entry to check whether the gateway address is present
     for arp_entry in arp_table:
         if arp_entry["IP address"] == gateway_address:
-            ScreenOutput('default GW MAC', arp_entry["HW address"])
             ##Grab the MAC address associated with the gateway address
             gateway_mac = arp_entry["HW address"]
-            time.sleep(3)
 
     return gateway_mac
 
