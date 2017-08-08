@@ -37,6 +37,8 @@ The actual IPerf server has a relatively simple role. The Cron job that runs wil
 
 One service that we are running on the IPerf server is the whats my IP address page. In order to obtain the information on the switch a particular tester is connected to we needed a fallback for when we cannot get the MAC address of CPEs outside interface. Therefore we utilise the whats my ip service to determine what the IP address is before any NAT translations so we can pass this to our API that will return the switch information. There are two methods that were done for this. The first made use of PHP and Apache to provide a webpage that when visted would display the address of the request in JSON format. The second makes use of Flask and Python that performs the same thing providing the IP address in JSON format for the request.
 
+In order for the Flask application to work better we made use of WSGI (Web Server Gateway Interface) for Apache. Using flask by default will cause a development WSGI instance to be run which can only handle a single request at a time. Therefore moving to WSGI allows for a better application. WSGI can be installed seperately using apt-get install libapache2-mod-wsgi. The app will run whenever Apache is run.
+
 ## IPerf Log Server
 The IPerf log server is the final storage location for the test logs. We use a number of different cron jobs to perform the various tasks required of the server. In order to get the logs we used a handful of cron jobs for RCP that will copy logs every 10 seconds. The IPerf log server will copy the logs files from /home/test-logs on the IPerf server to the /home/iperf directory on the IPerf log server. In order to save space on the IPerf test server we remove the files once copied.
 
