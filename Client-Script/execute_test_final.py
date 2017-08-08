@@ -12,6 +12,7 @@ import time
 import python_arptable
 import subprocess32 as subprocess
 import netifaces
+import speedtest
 from python_arptable import get_arp_table
 from uuid import getnode as get_mac
 from paramiko import SSHClient
@@ -161,6 +162,20 @@ def get_dg_mac():
 
     return gateway_mac
 
+##Function will perform another speed test as well for comparison using Ookla's speedtest.net
+def perform_ookla_test():
+    servers = []
+    ScreenOutput("Performing Ookla", "Speedtest...")
+    ookla = speedtest.Speedtest()
+    ookla.get_servers(servers)
+    ookla.get_best_server()
+    ookla_download = ookla.download() / 1000000
+    ookla_upload = ookla.upload() / 1000000
+    ookla_array = {}
+    ookla_array["download"] = ookla_download
+    ookla_array["upload"] = ookla_upload
+    return ookla_array
+
 ##Function will take the returned JSON and append new required values on the end
 def edit_json(hashed_file_name, gateway_mac) :
     ##Open the file and read the contents
@@ -177,6 +192,8 @@ def edit_json(hashed_file_name, gateway_mac) :
     except:
         gateway_ip = "Unknown"
 
+    ##Perform an Ookla Speedtest
+    ookla_results = perform_ookla_test()
     
     ##Obtain the MAC address of the board
     board_mac = get_mac()
@@ -188,10 +205,12 @@ def edit_json(hashed_file_name, gateway_mac) :
     json_file_contents = json.loads(file_contents)
     ##Add the new JSON values onto the end, the boards MAC address, the file hash, and the gateway MAC
     json_file_contents["end"]["host_information"] = {"mac_address": formatted_board_mac, "hash": hashed_file_name, "gateway_mac": gateway_mac, "gateway_ip": gateway_ip}
-
+    json_file_contents["end"]["ookla_test"] = {"download": ookla_results["download"], "upload": ookla_results["upload"]}
+    
     ##Dump the new JSON information into the file
     json.dump(json_file_contents, open(file_path, "w"))
-    print json_file_contents["end"]["host_information"]["mac_address"]
+    
+    
 
 ##Function will run the Line Test
 def runTest() :
