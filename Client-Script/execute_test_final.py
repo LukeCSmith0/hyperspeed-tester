@@ -13,6 +13,8 @@ import python_arptable
 import subprocess32 as subprocess
 import netifaces
 import speedtest
+import signal
+import time
 from python_arptable import get_arp_table
 from uuid import getnode as get_mac
 from paramiko import SSHClient
@@ -62,7 +64,10 @@ def ScreenOutput(TopLine, BottomLine):
     wiringpi2.lcdPosition(lcdHandle, lcdCol, lcdRow + 1)
     wiringpi2.lcdPrintf(lcdHandle, BottomLine)
 
-
+##Create a function that will raise a timeout error when called
+def timeout_handler(num, stack):
+    raise Exception("timed_out")
+    
 ##Function performs a ping test against the server to ensure that it is accessible
 def pingHome():
     ScreenOutput('Ping Test', 'Executing...')
@@ -132,16 +137,25 @@ def testIperfSocket() :
 
 
 def copySCPfiles(hashed_file_name):
-    hashed_file_path = log_files + "/" + hashed_file_name
-    ssh = SSHClient()
-    ssh.load_system_host_keys()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(hostname, username="username")
-    scp = SCPClient(ssh.get_transport())
-    scp.put(hashed_file_path, hashed_file_path)
-    scp.close()
-    ScreenOutput('Test Copied', 'To Server')
-    time.sleep(1)
+    try:
+        ScreenOutput("Copying Test", "To Server")
+        time.sleep(3)
+        hashed_file_path = log_files + "/" + hashed_file_name
+        ssh = SSHClient()
+        ssh.load_system_host_keys()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(hostname, username="username")
+        scp = SCPClient(ssh.get_transport())
+        scp.put(hashed_file_path, hashed_file_path)
+        scp.close()
+        ScreenOutput('Test Copied', 'To Server')
+        time.sleep(1)
+    except Exception, e:
+        ScreenOutput("Copy To", "Server Failed")
+        time.sleep(3)
+        ScreenOutput("Restarting", "Speed Test")
+        time.sleep(2)
+        executeTesting()
 
 ##Function will obtain the default gateway MAC address
 def get_dg_mac():
@@ -190,9 +204,22 @@ def edit_json(hashed_file_name, gateway_mac) :
     except:
         gateway_ip = "Unknown"
 
-    ##Perform an Ookla Speedtest
-    ookla_results = perform_ookla_test()
-    
+    ##Perform an Ookla Speedtest with a 20 second timeout
+    ookla_results = {}
+    signal.signal(signal.SIGALRM, timeout_handler)
+    signal.alarm(20)
+    try:
+        ookla_results = perform_ookla_test()
+    except Exception as ex:
+        if "timed_out" in ex:
+            ookla_results["download"] = ""
+            ookla_results["upload"] = ""
+        else:
+            ookla_results["download"] = ""
+            ookla_results["upload"] = ""
+    finally:
+        signal.alarm(0)
+     
     ##Obtain the MAC address of the board
     board_mac = get_mac()
     ##Format the MAC address into a common form
