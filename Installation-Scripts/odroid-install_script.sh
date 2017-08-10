@@ -47,6 +47,9 @@ sleep 2
 echo *******Installing Ookla Speedtest for Python********
 pip install speedtest-cli
 sleep 2
+echo *******Installing Python Requests module********
+pip install requests
+sleep 2
 echo *******Importing subprocess module for Python********
 cd /home
 git clone https://github.com/google/python-subprocess32
