@@ -4,7 +4,6 @@ import socket
 import ftplib
 import sys
 import hashlib
-import iperf3
 import json
 import shutil
 import time
