@@ -31,7 +31,7 @@ peak = ""
 
 ##Function displays the TopLine and BottomLine message passed on the screen
 def ScreenOutput(TopLine, BottomLine):
-    print TopLine + BottomLine
+    print TopLine + " " + BottomLine
 
 ##Create a function that will raise a timeout error when called
 def timeout_handler(num, stack):
