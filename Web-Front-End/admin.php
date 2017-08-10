@@ -29,16 +29,28 @@ include_once("conn.php");
             alert("All Fields Must Be Filled Out");
             return false;
         }
-
+        // {
+        // var regexp1=new RegExp("((\d|([a-f]|[A-F])){2}:){5}(\d|([a-f]|[A-F])){2}");
+        // if(regexp1.test(document.getElementById("Mac_Address").value)){
+        //   alert("Only alphabets from a-z and A-Z are allowed");
+        //   return false;
+        //   }
+        // }
     }
 
     $(document).ready(function () {
         $('.submit').click(function () {
             var nextTD = $(this).closest("td").next().text();
+            //console.log(nextTD);
+            // $.ajax({url: "delete.php", success: function(result){
+            //     $("#div1").html(result);
+            // }});
             $.post("delete.php", {nextTDs: nextTD}, function(result){
             });
-            var prev = $(this).closest('tr').remove();
 
+            var prev = $(this).closest('tr').remove();
+            //console.log(prev)
+            // $('.submit').remove();
         });
     });
 
@@ -50,7 +62,7 @@ include_once("conn.php");
         var split = LName.split(" ");
         var firstName = split[0];
         var secondName = split[1];
-        var emailPrefix = "<email-prefix>";
+        var emailPrefix = "@email.com";
         var Email_Address = firstName.concat(".", secondName, emailPrefix);
 
         if (typeof secondName === "undefined") {
@@ -89,6 +101,8 @@ include_once("conn.php");
   }
   .main_title {
     font-size: 1.5rem;
+    /*padding-left: 4px;*/
+    /*padding-top: 4px*/
   }
 
   .input_size {
@@ -105,17 +119,15 @@ include_once("conn.php");
   }
   </style>
 
-  <title>Speed Test - Hyperoptic</title>
+  <title>Speed Test</title>
   <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
 
 </head>
 <body>
 
+
       <div class="ui grid">
         <div class="ui stacked grey eight wide column">
-            <div class="img_padding">
-              <img class="ui small image left floated " src="transparent_hyperoptic_logo.png"></img>
-            </div>
 
               <p class="main_title">Line Tester Panel</p>
         </div>
@@ -134,14 +146,15 @@ include_once("conn.php");
         <br>
         <br>
         <br>
+	<div class="main ui container">
         <div class="ui grid center aligned">
-          <div class="seven wide column">
+	    <div class="ui secondary segment">
             <div class="ui form">
               <form name="insert"action="insert.php" method="post" onsubmit="return validateForm()">
                 <div class="fields">
                   <div class="field">
-                    <label>Mac Address</label>
-                    <input type="text" style="text-transform:uppercase" placeholder="Mac Address" name="Mac_Address" >
+                    <label>MAC Address</label>
+                    <input type="text" placeholder="MAC Address" name="Mac_Address" >
                   </div>
                   <div class="field">
                     <label>Engineer Name</label>
@@ -156,14 +169,13 @@ include_once("conn.php");
                       Submit
                     </button>
                   </div>
+		</div>
                 </div>
               </form>
-            </div>
           </div>
         </div>
 
-
-        <div class="table-grid">
+	<h2 class="ui dividing header">Assigned Boards</h2>
           <table class="ui sortable celled table">
             <thead>
               <tr>
@@ -197,11 +209,69 @@ include_once("conn.php");
             </tbody>
             <tfoot>
               <tr><th colspan="4">
-                <div class="ui right floated pagination menu"></div>
+		<?php
+		if ($num_rows == 1){
+			echo $num_rows . " Record";
+		}
+		else{
+			echo $num_rows . " Records";
+		}
+		?>
             </tr></tfoot>
           </table>
-        </div>
 
+		<h2 class="ui dividing header">Unassigned Boards</h2>
+		<table class="ui sortable celled table">
+			<thead>
+				<tr>
+					<th>MAC Address</th>
+					<th>Last Used</th>
+					<th>Test Amount</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$unused_sql = "SELECT DISTINCT test_logs.board_id FROM test_logs LEFT JOIN engineer_assignment ON test_logs.board_id = engineer_assignment.board_id WHERE engineer_assignment.engineer_id IS NULL";
+				$unused_result = $conn->query($unused_sql);
+				$unused_amount = $unused_result->num_rows;
+				if ($unused_amount == 0){
+					echo "<tr><td colspan='3'>No Unassigned Boards</td></tr>";
+				}
+				while ($row = mysqli_fetch_assoc($unused_result)) {
+					//Get the number of logs we have for the unused mac address
+					$board_mac = $row["board_id"];
+					$record_query = "SELECT COUNT(board_id) as record_amount, MAX(timestamp) as latest_record FROM test_logs WHERE board_id = '" . $board_mac . "'";
+					$record_result = $conn->query($record_query);
+					$record_row = mysqli_fetch_row($record_result);
+					$amount_of_records = $record_row[0];
+					$latest_record_timestamp = $record_row[1];
+					$latest_record_day = date('d-M-Y', $latest_record_timestamp);
+					$latest_record_time = date('H:i', $latest_record_timestamp);
+					echo "<tr>";
+					echo "<td>" . $board_mac . "</td>";
+					echo "<td>" . $latest_record_day . " at " . $latest_record_time . "</td>";
+					echo "<td>" . $amount_of_records . "</td>";
+					echo "</tr>";
+				}
+				?>
+			</tbody>
+			<tfoot>
+				<tr>
+					<th colspan="3">
+					<?php
+					if ($unused_amount == 1){
+						echo $unused_amount . " Record";
+					}
+					else {
+						echo $unused_amount . " Records";
+					}
+					?>
+					</th>
+				</tr>
+			</tfoot>
+		</table>
+
+	</div>
 
       </body>
 
