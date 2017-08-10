@@ -307,20 +307,18 @@ def executeTesting():
         ##Call the function that will copy the test file specified by the hash to the IPerf Server
         #copyftpfiles(hash_file)
         copySCPfiles(hash_file)
-        ##Execute an infinite while loop to loop the screen output at the end of the test
-        while True:
-            ##Display the test case ID which is equal to the hash
-            ScreenOutput('Test ID', hash_file)
-            time.sleep(5)
-            ##Display the upload speed extracted from the JSON file
-            ScreenOutput('Upload:', str(round(sent_gbps, 2)) + " Mbps" )
-            time.sleep(2)
-            ##Display the download speed extracted from the JSON file
-            ScreenOutput('Download:', str(round(received_gbps, 2)) + " Mbps")
-            time.sleep(2)
-            ##Display the download speed extracted from the JSON file
-            ScreenOutput('Peak:', str(round(peak, 2)) + " Mbps")
-            time.sleep(2)
+        ##Display the test case ID which is equal to the hash
+        ScreenOutput('Test ID', hash_file)
+        time.sleep(5)
+        ##Display the upload speed extracted from the JSON file
+        ScreenOutput('Upload:', str(round(sent_gbps, 2)) + " Mbps" )
+        time.sleep(2)
+        ##Display the download speed extracted from the JSON file
+        ScreenOutput('Download:', str(round(received_gbps, 2)) + " Mbps")
+        time.sleep(2)
+        ##Display the download speed extracted from the JSON file
+        ScreenOutput('Peak:', str(round(peak, 2)) + " Mbps")
+        time.sleep(2)
     else:
         ##If the ping test fails meaning no connectivity to the IPerf server then restart the test again
         ScreenOutput('Test Failed', 'Retrying...')
