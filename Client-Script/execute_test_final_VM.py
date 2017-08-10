@@ -7,7 +7,6 @@ import hashlib
 import iperf3
 import json
 import shutil
-import wiringpi2
 import time
 import python_arptable
 import subprocess32 as subprocess
@@ -29,40 +28,11 @@ log_files = "/home/iperf"
 sent_gbps = ""
 received_gbps = ""
 peak = ""
-############### Deals with screen initialisation on the board ###############
-# --LCD
-LCD_ROW = 2 # 16 Char
-LCD_COL = 16 # 2 Line
-LCD_BUS = 4 # Interface 4 Bit mode
 
-PORT_LCD_RS = 7 # GPIOY.BIT3(#83)
-PORT_LCD_E = 0 # GPIOY.BIT8(#88)
-PORT_LCD_D4 = 2 # GPIOX.BIT19(#116)
-PORT_LCD_D5 = 3 # GPIOX.BIT18(#115)
-PORT_LCD_D6 = 1 # GPIOY.BIT7(#87)
-PORT_LCD_D7 = 4 # GPIOX.BIT4(#104)
-# --Buttons
-PORT_LCD_5 = 5
-
-# --LCD
-##Initialise the screen
-wiringpi2.wiringPiSetup()
-# --LCD
-lcdHandle = wiringpi2.lcdInit(LCD_ROW, LCD_COL, LCD_BUS,
-PORT_LCD_RS, PORT_LCD_E,
-PORT_LCD_D4, PORT_LCD_D5,
-PORT_LCD_D6, PORT_LCD_D7, 0, 0, 0, 0);
-lcdRow = 0 # LCD Row
-lcdCol = 0 # LCD Column
-# --LCD
 
 ##Function displays the TopLine and BottomLine message passed on the screen
 def ScreenOutput(TopLine, BottomLine):
-    wiringpi2.lcdClear(lcdHandle)
-    wiringpi2.lcdPosition(lcdHandle, lcdCol, lcdRow)
-    wiringpi2.lcdPrintf(lcdHandle, TopLine)
-    wiringpi2.lcdPosition(lcdHandle, lcdCol, lcdRow + 1)
-    wiringpi2.lcdPrintf(lcdHandle, BottomLine)
+    print TopLine + BottomLine
 
 ##Create a function that will raise a timeout error when called
 def timeout_handler(num, stack):
