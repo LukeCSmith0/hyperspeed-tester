@@ -44,16 +44,13 @@ def pingHome():
     ##Perform an OS command to execute the ping test
     response = os.system("ping -c 2 " + hostname)
     status = ""
-    print(response)
 
     ##Check the result to see whether the pings were successful
     if response == 0:
-      print hostname, 'is up!'
       status = True
       ScreenOutput('Ping Test', 'Succesful')
       time.sleep(1)
     else:
-      print hostname, 'is down!'
       status = False
       ScreenOutput('Ping Test', 'Unsuccessful')
       time.sleep(3)
@@ -193,7 +190,6 @@ def edit_json(hashed_file_name, gateway_mac) :
     board_mac = get_mac()
     ##Format the MAC address into a common form
     formatted_board_mac = str(':'.join(("%012X" % board_mac)[i:i+2] for i in range(0, 12, 2)))
-    print formatted_board_mac
 
     ##Load in the contents of the file and convert to a JSON object
     json_file_contents = json.loads(file_contents)
@@ -219,7 +215,6 @@ def runTest() :
     ##Try and execute the IPerf test. Specifies a timeout of 14 seconds for the IPerf connection
     try:
         procId = subprocess.run(["iperf3","-c", hostname, "-J", "-t", "15" ], stdout=subprocess.PIPE, timeout=30)
-        print hostname
     ##Raise an error if the timeout expires and re-run the test
     except subprocess.TimeoutExpired:
         ScreenOutput('Speed Test', 'Failed')
@@ -265,8 +260,6 @@ def runTest() :
     ##Convert the bps into gbps
     sent_gbps = sent_bps / 1000000
     received_gbps = received_bps / 1000000
-    print str(sent_gbps)
-    print str(received_gbps)
     ScreenOutput('Speed Test', 'Finished')
     time.sleep(1)
 
@@ -278,7 +271,6 @@ def runTest() :
     ##Take the last 10 characters from the hash to make it shorter
     hash_name = md5_hash[:10]
     new_hash_name = log_files + "/" + hash_name.upper()
-    print new_hash_name
     ##Rename the file from results.json to the generated hash to uniquely identify the hash
     shutil.move(log_files + "/results.json", new_hash_name)
 
@@ -308,7 +300,6 @@ def executeTesting():
         testIperfSocket()
         ##Obtain the hash of the file received from executing the test
         hash_file = runTest()
-        print hash_file
         ##Obtain the MAC address of the current gateway
         gateway_mac = get_dg_mac()
         ##Change the JSON file created to include the extra data including gateway MAC, board MAC, and hash
@@ -322,13 +313,13 @@ def executeTesting():
             ScreenOutput('Test ID', hash_file)
             time.sleep(5)
             ##Display the upload speed extracted from the JSON file
-            ScreenOutput('Upload:', str(round(sent_gbps, 2)) + " Gbps" )
+            ScreenOutput('Upload:', str(round(sent_gbps, 2)) + " Mbps" )
             time.sleep(2)
             ##Display the download speed extracted from the JSON file
-            ScreenOutput('Download:', str(round(received_gbps, 2)) + " Gbps")
+            ScreenOutput('Download:', str(round(received_gbps, 2)) + " Mbps")
             time.sleep(2)
             ##Display the download speed extracted from the JSON file
-            ScreenOutput('Peak:', str(round(peak, 2)) + " Gbps")
+            ScreenOutput('Peak:', str(round(peak, 2)) + " Mbps")
             time.sleep(2)
     else:
         ##If the ping test fails meaning no connectivity to the IPerf server then restart the test again
