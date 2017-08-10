@@ -9,6 +9,7 @@ import shutil
 import wiringpi2
 import time
 import python_arptable
+import requests
 import subprocess32 as subprocess
 import netifaces
 import speedtest
