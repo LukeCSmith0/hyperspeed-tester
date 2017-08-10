@@ -29,28 +29,15 @@ include_once("conn.php");
             alert("All Fields Must Be Filled Out");
             return false;
         }
-        // {
-        // var regexp1=new RegExp("((\d|([a-f]|[A-F])){2}:){5}(\d|([a-f]|[A-F])){2}");
-        // if(regexp1.test(document.getElementById("Mac_Address").value)){
-        //   alert("Only alphabets from a-z and A-Z are allowed");
-        //   return false;
-        //   }
-        // }
     }
 
     $(document).ready(function () {
         $('.submit').click(function () {
             var nextTD = $(this).closest("td").next().text();
-            //console.log(nextTD);
-            // $.ajax({url: "delete.php", success: function(result){
-            //     $("#div1").html(result);
-            // }});
             $.post("delete.php", {nextTDs: nextTD}, function(result){
             });
 
             var prev = $(this).closest('tr').remove();
-            //console.log(prev)
-            // $('.submit').remove();
         });
     });
 
@@ -68,7 +55,6 @@ include_once("conn.php");
         if (typeof secondName === "undefined") {
           document.getElementById('Name').focus();
           document.getElementById('Email').value = "";
-          //alert("All Fields Must Be Filled Out");
           return false;
 
         } else {
